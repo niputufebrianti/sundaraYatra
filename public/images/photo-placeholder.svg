@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-labelledby="title description">
+  <title id="title">Foto belum tersedia</title>
+  <desc id="description">Placeholder hijau muda untuk gambar destinasi</desc>
+  <rect width="800" height="600" fill="#E4EFE7"/>
+  <rect x="272" y="184" width="256" height="232" rx="24" fill="#FFFFFF" stroke="#6B4A2F" stroke-width="12"/>
+  <circle cx="458" cy="264" r="30" fill="#C9A24A"/>
+  <path d="M306 372l82-96 62 72 38-42 70 66H306z" fill="#1F4D3A"/>
+  <text x="400" y="458" text-anchor="middle" fill="#1F4D3A" font-family="Inter, sans-serif" font-size="28">Foto belum tersedia</text>
+</svg>
