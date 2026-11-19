@@ -1,3 +1,5 @@
+import { readDemoData } from "./storage";
+
 const KABUPATEN = new Set([
   "Badung",
   "Bangli",
@@ -49,9 +51,15 @@ export async function loadData() {
       throw new Error("Format data tidak sesuai.");
     }
 
-    return {
+    const stored = readDemoData();
+    const source = stored.data || {
       destinasi: data.destinasi.filter(isValidDestination),
       even: data.even.filter(isValidEvent),
+    };
+
+    return {
+      ...source,
+      warning: stored.warning,
     };
   } catch (error) {
     throw new Error("Data destinasi dan even tidak dapat dimuat.", {

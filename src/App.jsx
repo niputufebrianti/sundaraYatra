@@ -1,26 +1,15 @@
-import { Link, Route, Routes } from "react-router";
+import { Route, Routes } from "react-router";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Beranda from "./pages/Beranda";
 import Destinasi from "./pages/Destinasi";
-
-function PlaceholderPage() {
-  return (
-    <main>
-      <h1>Sundara Yatra</h1>
-      <p>Persiapan proyek selesai. Halaman fitur belum dibuat.</p>
-    </main>
-  );
-}
-
-function NotFound() {
-  return (
-    <main>
-      <h1>Halaman tidak ditemukan</h1>
-      <Link to="/">Kembali ke Beranda</Link>
-    </main>
-  );
-}
+import DetailDestinasi from "./pages/DetailDestinasi";
+import Even from "./pages/Even";
+import Tentang from "./pages/Tentang";
+import Masuk from "./pages/Masuk";
+import Daftar from "./pages/Daftar";
+import NotFound from "./pages/NotFound";
+import Dashboard from "./pages/Dashboard";
 
 export default function App() {
   return (
@@ -31,11 +20,12 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Beranda />} />
           <Route path="/destinasi" element={<Destinasi />} />
-          <Route path="/destinasi/:id" element={<PlaceholderPage />} />
-          <Route path="/even" element={<PlaceholderPage />} />
-          <Route path="/tentang" element={<PlaceholderPage />} />
-          <Route path="/masuk" element={<PlaceholderPage />} />
-          <Route path="/daftar" element={<PlaceholderPage />} />
+          <Route path="/destinasi/:id" element={<DetailDestinasi />} />
+          <Route path="/even" element={<Even />} />
+          <Route path="/tentang" element={<Tentang />} />
+          <Route path="/masuk" element={<Masuk />} />
+          <Route path="/daftar" element={<Daftar />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

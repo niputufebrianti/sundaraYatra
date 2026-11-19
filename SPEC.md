@@ -52,14 +52,23 @@
 - Halaman Login/Daftar **tampilan saja** (tanpa autentikasi nyata)
 - Responsif HP, empty state, loading state, error state, halaman 404
 
+### 2.1.1 Tambahan demo yang disetujui
+
+Tambahan berikut disetujui untuk dikerjakan setelah fitur inti. Semuanya tetap front-end, tanpa backend:
+- Tombol kontak WhatsApp pada detail destinasi/even. Data contoh memakai `whatsapp: null`; tombol tampil nonaktif sampai nomor resmi diberikan dan pemilik menyetujui penggunaannya.
+- Dashboard demo untuk CRUD **destinasi saja**. Perubahan hanya berlaku di browser yang sedang dipakai, tidak dibagikan ke pengunjung lain.
+- `localStorage` hanya untuk menyimpan perubahan data demo dari dashboard. Tidak digunakan untuk data form Masuk/Daftar.
+
+Dashboard wajib selalu menampilkan: **"Mode demo: perubahan hanya tersimpan di browser ini."** Dashboard tidak memakai gerbang login palsu dan tidak boleh disebut aman atau sebagai CMS bersama.
+
 ### 2.2 TIDAK termasuk (ditunda ke fase lanjut)
 - Autentikasi nyata, akun pengguna, database, backend/API
-- Dashboard admin/CMS, unggah gambar oleh pengguna
+- Dashboard admin/CMS bersama, unggah gambar oleh pengguna
 - Booking/pembayaran tiket, ulasan/rating
 - Peta interaktif tertanam (cukup tautan Google Maps)
 - Multi-bahasa (ID/EN)
 
-> Aturan emas: **jika tidak ada di daftar "Termasuk", jangan dibuat.** Jika ada ide tambahan, catat di bagian 21 (Backlog), jangan langsung dikerjakan.
+> Aturan emas: **jika tidak ada di daftar "Termasuk" atau "Tambahan demo yang disetujui", jangan dibuat.** Jika ada ide tambahan, catat di bagian 21 (Backlog), jangan langsung dikerjakan.
 
 ---
 
@@ -95,6 +104,7 @@
 | `/tentang` | Tentang Kami | Misi, nilai, **Etika Berkunjung**, kontak |
 | `/masuk` | Login | Form tampilan saja |
 | `/daftar` | Daftar | Form tampilan saja |
+| `/dashboard` | Dashboard demo | CRUD destinasi lokal di browser ini saja; tanpa autentikasi |
 | `*` | 404 | Halaman tidak ditemukan + tombol kembali |
 
 ---
@@ -150,6 +160,7 @@ sundaraYatra/
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Nama+Tempat",
       "jamKunjung": "Isi hanya jika terverifikasi",
       "tiket": "Isi hanya jika terverifikasi",
+      "whatsapp": null,
       "fasilitas": ["Parkir", "Toilet"],
       "kreditFoto": "Nama fotografer / sumber + lisensi",
       "dataContoh": true
@@ -166,6 +177,7 @@ sundaraYatra/
       "akses": "umum",
       "lokasi": "Nama tempat",
       "destinasiId": "contoh-destinasi-1",
+      "whatsapp": null,
       "deskripsi": "Deskripsi singkat even.",
       "dataContoh": true
     }
@@ -178,12 +190,14 @@ sundaraYatra/
 - **kategori seni** (5): `Tari`, `Musik`, `Seni Rupa`, `Kriya`, `Festival`.
 - **akses even**: `umum` (terbuka untuk umum), `tiket` (perlu tiket), `sakral` (upacara sakral; ikuti aturan setempat).
 - **tanggal**: format ISO `YYYY-MM-DD`.
+- **whatsapp**: nomor internasional hanya angka (contoh format: `62...`), atau `null`.
 
 ### 6.2 Aturan data
 - Semua data awal adalah **data contoh** dengan `"dataContoh": true`. Tampilkan lencana "Data contoh" di UI selama nilainya `true`.
 - **Dilarang mengarang** alamat, koordinat, harga, jam buka, atau jadwal even. Jika belum terverifikasi, isi `null` dan tampilkan "Informasi belum tersedia".
 - Setiap destinasi yang diisi data nyata wajib memiliki `kreditFoto`.
 - `destinasiId` pada even harus cocok dengan `id` destinasi, atau `null`.
+- Nomor `whatsapp` hanya diisi setelah diverifikasi dan pemilik nomor menyetujui penggunaannya. Data contoh dan nomor yang belum disetujui wajib `null`.
 - `id` unik, huruf kecil, angka, dan tanda hubung (`-`) saja.
 
 ---
@@ -246,6 +260,23 @@ Setiap fitur dianggap **selesai** hanya jika semua kriteria penerimaannya diperi
 - Titik patah: **HP** (<640px), **tablet** (640–1023px), **desktop** (≥1024px). Desain dimulai dari HP (*mobile-first*).
 - Komponen `EmptyState`, `LoadingState`, `ErrorState`, dan halaman `NotFound` dipakai ulang di seluruh situs.
 - **Kriteria:** tidak ada scroll horizontal di lebar 360px; area sentuh tombol ≥ 44×44px; teks ≥ 16px untuk isi utama.
+
+### F10. Kontak WhatsApp (DEMO)
+**Sebagai** pengunjung, **saya ingin** menghubungi pengelola destinasi/even lewat WhatsApp, **agar** bisa menanyakan informasi secara langsung.
+- Destinasi dan even dapat memiliki `whatsapp` berisi nomor yang telah diverifikasi dan disetujui pemiliknya.
+- Nomor hanya berisi angka dengan panjang 8–15 digit dalam format internasional. Tautan dibentuk sebagai `https://wa.me/<nomor>?text=<pesan>` dan teks di-encode.
+- Pesan awal hanya menyebut nama destinasi/even, tidak berisi data pribadi pengunjung.
+- Jika nomor `null` atau tidak valid, tampilkan tombol nonaktif dengan teks "Kontak belum tersedia".
+- **Kriteria:** tautan valid memakai `target="_blank"` dan `rel="noopener noreferrer"`; nomor kosong/tidak valid tidak menghasilkan tautan; nomor contoh tidak pernah dikarang.
+
+### F11. Dashboard destinasi (MODE DEMO)
+**Sebagai** pembuat prototipe, **saya ingin** mencoba mengelola destinasi di browser sendiri, **agar** alur CRUD bisa didemonstrasikan tanpa mengaku sebagai CMS sungguhan.
+- Dashboard pada `/dashboard` hanya mengelola destinasi; tidak ada autentikasi atau gerbang login palsu.
+- Peringatan tetap terlihat: **"Mode demo: perubahan hanya tersimpan di browser ini."**
+- Data awal berasal dari `src/data/data.json`; perubahan tersimpan lokal di `localStorage` browser tersebut dan tidak disinkronkan ke orang lain.
+- Form menambah/mengubah/menghapus destinasi divalidasi; penghapusan meminta konfirmasi.
+- Data simpanan yang rusak atau tidak valid diabaikan dengan pesan yang jelas, lalu aplikasi menggunakan data awal.
+- **Kriteria:** perubahan CRUD terlihat di katalog pada browser yang sama dan bertahan setelah refresh; pengaturan ulang mengembalikan data awal; tidak ada foto base64, kata sandi, token, atau data pribadi pengunjung yang disimpan. Nomor kontak bisnis hanya boleh tersimpan jika pemiliknya menyetujui.
 
 ---
 
@@ -469,7 +500,7 @@ Natural, modern, elegan: banyak ruang kosong, foto besar, ornamen minimal. Anima
 ## 14. C — CONSTRAINTS & SECURITY (Larangan dan Keamanan)
 
 ### 14.1 Larangan untuk AI dan pembuat
-1. **Jangan** menambah fitur di luar bagian 2.1.
+1. **Jangan** menambah fitur di luar bagian 2.1 dan 2.1.1.
 2. **Jangan** memasang paket tanpa menyebut nama, fungsi, dan alasannya, lalu menunggu persetujuan.
 3. **Jangan** menghapus atau menimpa file yang tidak terkait tugas; jangan mengubah banyak file sekaligus tanpa penjelasan.
 4. **Jangan** menulis ulang seluruh aplikasi untuk memperbaiki satu bug (pakai alur: reproduksi → akar masalah → perbaikan minimal → uji).
@@ -483,8 +514,10 @@ Natural, modern, elegan: banyak ruang kosong, foto besar, ornamen minimal. Anima
 - **Tidak ada rahasia di repositori.** Proyek ini tidak butuh API key. Jika nanti ada, simpan di `.env` (sudah masuk `.gitignore`), bukan di kode. File `.env.example` hanya berisi nama variabel tanpa nilai.
 - **Cegah XSS:** jangan memakai `dangerouslySetInnerHTML`, `innerHTML`, atau `eval`. Tampilkan teks lewat JSX biasa (otomatis di-escape).
 - **Validasi URL:** `mapsUrl` hanya boleh `https://` dengan host `www.google.com`, `maps.google.com`, atau `maps.app.goo.gl` (cek di `src/lib/url`). Selain itu, tombol Maps disembunyikan. Tautan eksternal memakai `target="_blank"` **dan** `rel="noopener noreferrer"`.
+- **WhatsApp:** `whatsapp` hanya nomor 8–15 digit internasional yang sudah diverifikasi dan disetujui pemilik nomor. Buat tautan hanya melalui helper validasi; nomor `null`/invalid tidak boleh dipakai.
 - **Parameter URL dan input pencarian** dianggap tidak tepercaya: validasi terhadap daftar nilai yang diizinkan, jangan dimasukkan ke HTML mentah.
 - **Form Login/Daftar:** jangan menyimpan kata sandi di mana pun (state sementara boleh, dikosongkan setelah kirim), jangan mencatat (`console.log`) isi kolom sandi, jangan mengirim ke jaringan.
+- **Dashboard/localStorage demo:** tidak ada autentikasi/otorisasi sungguhan dan data hanya lokal. Selalu tampilkan peringatan mode demo. Tangani kegagalan baca/tulis `localStorage`, validasi data tersimpan sebelum dipakai, dan jangan menyimpan kata sandi, token, data pribadi pengunjung, atau gambar base64. Nomor kontak bisnis hanya boleh disimpan dengan izin pemiliknya.
 - **Rantai pasok paket:** sebelum menerima paket baru dari saran AI, cek di npmjs.com: jumlah unduhan mingguan, usia, repositori GitHub, dan pembuat. Waspadai nama paket yang terdengar masuk akal tetapi tidak dikenal. Setelah instalasi, jalankan `npm audit` dan baca hasilnya.
 - **Review kode AI:** baca semua perubahan (`git diff`) sebelum commit. Perhatikan kode yang aneh, URL asing, atau fungsi yang namanya tidak dikenal.
 - **Hak cipta dan privasi:** jangan menempel data pribadi, token, atau file `.env` ke chat AI.
@@ -653,7 +686,7 @@ Sebuah fitur selesai jika: (1) kode berjalan tanpa error di konsol, (2) kriteria
 ---
 
 ## 21. Backlog (Ide Fase Lanjut, JANGAN dikerjakan di MVP)
-Autentikasi nyata (mis. Supabase Auth) · database · dashboard admin/CMS · unggah gambar · peta interaktif (Leaflet/OpenStreetMap) · multi-bahasa ID/EN · wishlist · ulasan · booking tiket · render sisi server (Next.js) untuk SEO lebih baik · pengujian otomatis (Vitest, Playwright) · analytics.
+Autentikasi nyata (mis. Supabase Auth) · database · dashboard admin/CMS bersama · unggah gambar · peta interaktif (Leaflet/OpenStreetMap) · multi-bahasa ID/EN · wishlist · ulasan · booking tiket · render sisi server (Next.js) untuk SEO lebih baik · pengujian otomatis (Vitest, Playwright) · analytics.
 
 ---
 

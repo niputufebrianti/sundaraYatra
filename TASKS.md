@@ -27,18 +27,18 @@
 
 ---
 
-## 1. Keputusan Terbuka dan Ketidakselarasan (BACA DULU)
+## 1. Keputusan Pemilik Proyek (19 November 2026)
 
-Beberapa milestone yang diminta **bertentangan dengan SPEC.md versi sekarang**. Selesaikan sebelum mengerjakan milestone terkait.
+Keputusan berikut menjadi acuan sebelum mengerjakan milestone terkait.
 
 | Kode | Masalah | Usulan | Keputusan Anda |
 |---|---|---|---|
-| **D1** | SPEC.md bagian 2.2 menyatakan **dashboard admin/CMS dan backend tidak termasuk MVP**. Milestone M4 (CRUD dashboard) dan M5 (localStorage) melanggarnya. WhatsApp (M3) juga belum ada di SPEC.md. | Perbarui SPEC.md (tugas **T0.1**) agar memuat F10 WhatsApp dan F11 Dashboard demo, serta memindahkan item tersebut dari "Tidak termasuk" ke "Termasuk (demo)". | [ ] Setuju  [ ] Ubah |
-| **D2** | Dashboard tanpa backend **tidak bisa punya keamanan nyata**: siapa pun yang membuka `/dashboard` dapat mengubah data **di browser mereka sendiri**. Perubahan tidak dibagikan ke pengunjung lain. | Beri label jelas "**Mode demo: perubahan hanya tersimpan di browser ini**". **Jangan** membuat login palsu yang hanya menyembunyikan halaman dan menyebutnya aman. Pengelolaan data bersama baru benar-benar mungkin dengan backend (misalnya Supabase) di fase lanjut. | [ ] Setuju  [ ] Ubah |
-| **D3** | WhatsApp butuh **nomor**. Nomor pribadi adalah data pribadi. | Hanya pakai nomor yang **terverifikasi dan disetujui pemiliknya** (misalnya nomor bisnis pengelola). Untuk data contoh, isi `null` dan tombol tampil nonaktif ("Kontak belum tersedia"). **Jangan mengarang nomor.** | [ ] Setuju  [ ] Ubah |
-| **D4** | Cakupan CRUD: hanya **destinasi**, atau juga **even**? | Mulai dari **destinasi saja** (P1); even menyusul (P2). | [ ] Destinasi  [ ] Keduanya |
-| **D5** | Daftar milestone yang diminta tidak menyebut **Kalender Even, Tentang/Etika, dan Masuk/Daftar (tampilan)** yang ada di SPEC.md. | Dilipat ke M1 (katalog dan halaman) agar tidak ada fitur SPEC.md yang terlewat. | [ ] Setuju  [ ] Ubah |
-| **D6** | **Waktu ±2 jam tidak cukup** untuk semua milestone dengan kualitas baik. | Ikuti prioritas P0/P1/P2 dan **garis potong** di bagian 3. | [ ] Setuju |
+| **D1** | SPEC.md sebelumnya belum mencakup fitur demo WhatsApp/dashboard. | Setujui WhatsApp dan dashboard demo di SPEC 2.1.1; dashboard lokal saja, bukan CMS bersama. | [x] Setuju |
+| **D2** | Dashboard tanpa backend hanya mengubah data browser yang dipakai. | Tampilkan "**Mode demo: perubahan hanya tersimpan di browser ini**"; tanpa gerbang login palsu atau klaim keamanan. | [x] Setuju |
+| **D3** | WhatsApp memerlukan nomor dengan izin pemilik. | Nomor akan diberikan pemilik proyek kemudian; saat ini `null`, tombol "Kontak belum tersedia". Tidak mengarang nomor. | [x] Setuju |
+| **D4** | Cakupan CRUD dapat destinasi atau even. | Destinasi saja; CRUD even tidak dikerjakan. | [x] Destinasi |
+| **D5** | Kalender, Tentang/Etika, Masuk/Daftar perlu masuk dalam rangkaian tugas. | Sertakan semua halaman MVP yang tercantum di SPEC.md. | [x] Setuju |
+| **D6** | Waktu terbatas. | Ikuti urutan penuh TASKS.md sesuai arahan pemilik proyek. | [x] Setuju |
 
 ---
 
@@ -49,9 +49,9 @@ Beberapa milestone yang diminta **bertentangan dengan SPEC.md versi sekarang**. 
 | M0 | Scaffold (dan penyelarasan SPEC) | P0 | 10–15 mnt | `[ ]` |
 | M1 | Katalog dan halaman utama | P0 | 25–30 mnt | `[ ]` |
 | M2 | Interaksi pencarian dan filter | P0 | 15–20 mnt | `[ ]` |
-| M3 | WhatsApp | P1 | 8–10 mnt | `[ ]` |
-| M4 | CRUD dashboard | P1/P2 | 20–25 mnt | `[ ]` |
-| M5 | localStorage | P1/P2 | 10 mnt | `[ ]` |
+| M3 | WhatsApp | P1 | 8–10 mnt | `[x]` |
+| M4 | CRUD dashboard | P1/P2 | 20–25 mnt | `[x]` |
+| M5 | localStorage | P1/P2 | 10 mnt | `[x]` |
 | M6 | Testing | P0 (minimal) | 7–10 mnt | `[ ]` |
 | M7 | Security | P0 (minimal) | 7–10 mnt | `[ ]` |
 | M8 | Build | P0 | 3–5 mnt | `[ ]` |
@@ -74,7 +74,7 @@ Urutan prioritas jika waktu mepet:
 **Tujuan:** proyek siap dikembangkan, dokumen panduan selaras, repositori rapi.
 **Berkas dokumen:** `SPEC.md`, `UI-SPEC.md`, `TASKS.md` di akar proyek; `.github/copilot-instructions.md`.
 
-### T0.1 — Selaraskan SPEC.md dengan milestone baru  `[ ]`  (P0, dokumen saja)
+### T0.1 — Selaraskan SPEC.md dengan milestone baru  `[x]`  (P0, dokumen saja)
 - **AC:**
   - Keputusan D1–D5 sudah dicatat.
   - SPEC.md bagian 2 memuat WhatsApp dan Dashboard demo di "Termasuk (demo)" dan tidak lagi bertentangan.
@@ -226,7 +226,7 @@ Urutan prioritas jika waktu mepet:
 **Tujuan:** pengunjung dapat menghubungi pengelola/penyelenggara melalui WhatsApp dengan aman.
 **Prasyarat:** keputusan D1 dan D3; SPEC.md sudah diperbarui (T0.1).
 
-### T3.1 — Data dan aturan nomor  `[ ]`  (P1)
+### T3.1 — Data dan aturan nomor  `[x]`  (P1)
 - **AC:**
   - Field `whatsapp` ditambahkan di model data (boleh `null`).
   - Nomor memakai format internasional **hanya angka** (contoh: `62…`, tanpa `+`, spasi, atau tanda hubung).
@@ -234,7 +234,7 @@ Urutan prioritas jika waktu mepet:
   - Aturan ini tercatat di SPEC.md.
 - **Berkas:** `src/data/data.json`, `SPEC.md`.
 
-### T3.2 — Pembuat tautan WhatsApp di `src/lib/whatsapp`  `[ ]`  (P1)
+### T3.2 — Pembuat tautan WhatsApp di `src/lib/whatsapp`  `[x]`  (P1)
 - **AC:**
   - Fungsi memvalidasi nomor (angka saja, panjang wajar) sebelum membuat tautan.
   - Tautan berbentuk `https://wa.me/<nomor>?text=<pesan>` dengan pesan di-**encode** (`encodeURIComponent`).
@@ -242,7 +242,7 @@ Urutan prioritas jika waktu mepet:
   - Pesan awal hanya memuat nama destinasi/even; tidak memuat data pribadi pengguna.
 - **Berkas:** `src/lib/whatsapp.*`.
 
-### T3.3 — Tombol WhatsApp di UI  `[ ]`  (P1)
+### T3.3 — Tombol WhatsApp di UI  `[x]`  (P1)
 - **AC:**
   - Tombol "Hubungi via WhatsApp" tampil di halaman detail destinasi (dan di item even bila `whatsapp` ada).
   - Terbuka di tab baru dengan `target="_blank"` dan `rel="noopener noreferrer"`.
@@ -250,7 +250,7 @@ Urutan prioritas jika waktu mepet:
   - Warna dan gaya mengikuti UI-SPEC (tidak memakai warna di luar palet kecuali disetujui).
 - **Berkas:** `src/pages/DetailDestinasi.*`, `src/components/even/EvenItem.*`, `src/components/ui/Button.*`.
 
-**Hasil testing M3:** `BELUM DIUJI`  ·  **Catatan kendala:** –
+**Hasil testing M3:** `LULUS`  ·  **Catatan kendala:** Nomor kontak belum diberikan; semua data contoh menggunakan `null` dan tombol detail tidak aktif.
 
 ---
 
@@ -259,7 +259,7 @@ Urutan prioritas jika waktu mepet:
 **Tujuan:** pengelola dapat menambah, mengubah, dan menghapus destinasi **di browser sendiri** untuk demonstrasi.
 **Prasyarat:** keputusan D1, D2, D4; SPEC.md diperbarui. **Kerjakan bersamaan dengan M5.**
 
-### T4.1 — Kerangka halaman dashboard  `[ ]`  (P1)
+### T4.1 — Kerangka halaman dashboard  `[x]`  (P1)
 - **AC:**
   - Rute `/dashboard` ada, tertaut dari Footer/Navbar secara wajar.
   - Spanduk tetap tampil: "**Mode demo: perubahan hanya tersimpan di browser ini.**"
@@ -267,14 +267,14 @@ Urutan prioritas jika waktu mepet:
   - Tampilan responsif dan aksesibel.
 - **Berkas:** `src/pages/Dashboard.*`, `src/App.*`, `src/components/layout/Navbar.*`, `Footer.*`.
 
-### T4.2 — Daftar dan Read  `[ ]`  (P1)
+### T4.2 — Daftar dan Read  `[x]`  (P1)
 - **AC:**
   - Tabel/daftar destinasi dengan kolom nama, kabupaten, kategori, aksi (Ubah, Hapus).
   - Di HP, tabel dapat digulir di dalam wadahnya sendiri (tanpa scroll horizontal halaman).
   - Data kosong → EmptyState dengan tombol "Tambah destinasi".
 - **Berkas:** `src/pages/Dashboard.*`, `src/components/dashboard/DestinasiTable.*`.
 
-### T4.3 — Create (tambah destinasi)  `[ ]`  (P1)
+### T4.3 — Create (tambah destinasi)  `[x]`  (P1)
 - **AC:**
   - Form dengan label tampil: nama, kabupaten (dropdown enum), kategori (pilihan enum), ringkasan, deskripsi, URL gambar, `mapsUrl`, `whatsapp` (opsional), kredit foto.
   - Validasi: nama wajib dan panjang dibatasi, enum valid, `mapsUrl` lolos validasi host, gambar berupa jalur lokal atau URL `https`, nomor WhatsApp valid atau kosong.
@@ -283,13 +283,13 @@ Urutan prioritas jika waktu mepet:
   - Setelah berhasil, item muncul di daftar dan di katalog publik pada browser yang sama.
 - **Berkas:** `src/components/dashboard/DestinasiForm.*`, `src/lib/validasi.*`, `src/lib/url.*`, `src/lib/whatsapp.*`, `src/pages/Dashboard.*`.
 
-### T4.4 — Update (ubah destinasi)  `[ ]`  (P1)
+### T4.4 — Update (ubah destinasi)  `[x]`  (P1)
 - **AC:**
   - Form terisi data lama; menyimpan memperbarui item yang benar (tanpa mengubah `id`).
   - Validasi sama dengan Create; tombol "Batal" mengembalikan tanpa menyimpan.
 - **Berkas:** `src/components/dashboard/DestinasiForm.*`, `src/pages/Dashboard.*`.
 
-### T4.5 — Delete (hapus destinasi) dengan konfirmasi  `[ ]`  (P1)
+### T4.5 — Delete (hapus destinasi) dengan konfirmasi  `[x]`  (P1)
 - **AC:**
   - Menghapus meminta **konfirmasi** yang jelas ("Hapus destinasi X? Tindakan ini tidak dapat dibatalkan di browser ini.").
   - Setelah dihapus, item hilang dari dashboard dan katalog.
@@ -300,7 +300,7 @@ Urutan prioritas jika waktu mepet:
 - **AC:** tambah/ubah/hapus even dengan validasi tanggal ISO, enum akses/kategori, `destinasiId` valid atau `null`; konfirmasi hapus.
 - **Berkas:** `src/components/dashboard/EvenForm.*`, `EvenTable.*`, `src/lib/validasi.*`.
 
-**Hasil testing M4:** `BELUM DIUJI`  ·  **Catatan kendala:** –
+**Hasil testing M4:** `LULUS`  ·  **Catatan kendala:** CRUD diuji di browser; tabel/form responsif pada 360px. Perubahan hanya lokal.
 
 ---
 
@@ -309,29 +309,29 @@ Urutan prioritas jika waktu mepet:
 **Tujuan:** perubahan dashboard bertahan setelah halaman dimuat ulang, dengan penanganan data rusak yang aman.
 **Catatan:** ini **tidak** melanggar aturan SPEC.md F8 (data form login tidak boleh disimpan); yang disimpan hanya data destinasi/even.
 
-### T5.1 — Lapisan penyimpanan `src/lib/storage`  `[ ]`  (P1)
+### T5.1 — Lapisan penyimpanan `src/lib/storage`  `[x]`  (P1)
 - **AC:**
   - Satu kunci tetap dengan prefiks proyek (contoh `sundarayatra:v1:data`) dan penanda versi skema.
   - Setiap baca/tulis dibungkus `try/catch` (bisa gagal: mode privat, kuota penuh, diblokir).
   - Data hasil baca **divalidasi** (bentuk dan enum) sebelum dipakai; data rusak/ber-tampering → diabaikan dan jatuh ke `data.json`, tanpa layar putih.
-  - Tidak menyimpan kata sandi, token, atau data pribadi.
+  - Tidak menyimpan kata sandi, token, atau data pribadi pengunjung; nomor kontak bisnis hanya jika pemiliknya memberi izin.
 - **Berkas:** `src/lib/storage.*`, `src/lib/validasi.*`.
 
-### T5.2 — Sumber data tunggal (data awal + perubahan)  `[ ]`  (P1)
+### T5.2 — Sumber data tunggal (data awal + perubahan)  `[x]`  (P1)
 - **AC:**
   - Aplikasi memakai `data.json` sebagai data awal; bila ada data tersimpan yang valid, itu yang dipakai.
   - Katalog, filter, detail, dan dashboard membaca dari sumber yang sama.
   - Setelah Create/Update/Delete lalu refresh, perubahan tetap ada.
 - **Berkas:** `src/lib/data.*`, `src/App.*`, `src/pages/*` yang membaca data.
 
-### T5.3 — Atur ulang data demo dan batas ukuran  `[ ]`  (P1)
+### T5.3 — Atur ulang data demo dan batas ukuran  `[x]`  (P1)
 - **AC:**
   - Tombol "Kembalikan data awal" (dengan konfirmasi) menghapus data tersimpan dan memuat ulang `data.json`.
   - Gambar **tidak** disimpan sebagai base64 di localStorage (hanya jalur/URL) agar tidak melebihi kuota.
   - Kuota penuh → pesan kesalahan ramah (bukan crash).
 - **Berkas:** `src/lib/storage.*`, `src/pages/Dashboard.*`, `src/components/ui/ConfirmDialog.*`.
 
-**Hasil testing M5:** `BELUM DIUJI`  ·  **Catatan kendala:** –
+**Hasil testing M5:** `LULUS`  ·  **Catatan kendala:** Data rusak, pemulihan data awal, persistensi refresh, dan simulasi kuota penuh diuji; foto base64 ditolak.
 
 ---
 

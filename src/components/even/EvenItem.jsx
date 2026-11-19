@@ -1,6 +1,7 @@
 import Badge from "../ui/Badge";
 import Card from "../ui/Card";
 import { formatTanggal } from "../../lib/tanggal";
+import WhatsAppContactButton from "../ui/WhatsAppContactButton";
 
 export default function EvenItem({ even }) {
   return (
@@ -19,6 +20,11 @@ export default function EvenItem({ even }) {
       </div>
       <Badge variant={even.akses}>{even.akses}</Badge>
       {even.dataContoh && <Badge variant="data">Data contoh</Badge>}
+      <WhatsAppContactButton
+        phoneNumber={even.whatsapp}
+        itemName={even.nama}
+        showUnavailable={false}
+      />
     </Card>
   );
 }

@@ -16,6 +16,8 @@ import {
   isKategoriValid,
   normalizeQuery,
 } from "../lib/filter";
+import { setPageMetadata } from "../lib/pageMetadata";
+import DataNotice from "../components/ui/DataNotice";
 
 export default function Destinasi() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -33,7 +35,10 @@ export default function Destinasi() {
   const query = normalizeQuery(queryParam);
 
   useEffect(() => {
-    document.title = "Destinasi | Sundara Yatra";
+    setPageMetadata(
+      "Destinasi | Sundara Yatra",
+      "Cari dan saring destinasi wisata seni dan budaya di berbagai wilayah Bali.",
+    );
     setError("");
 
     loadData()
@@ -63,10 +68,12 @@ export default function Destinasi() {
           <h1>Destinasi</h1>
           <p>Temukan ruang seni dan budaya di seluruh Bali.</p>
         </header>
+        {data && <DataNotice warning={data.warning} />}
 
         <section className="destination-filters" aria-label="Filter destinasi">
           <div className="filter-mobile-heading">
             <SearchBar
+              id="destination-search-mobile"
               value={query}
               onChange={(value) => updateFilter("q", normalizeQuery(value))}
             />
@@ -86,6 +93,7 @@ export default function Destinasi() {
           >
             <div className="desktop-search">
               <SearchBar
+                id="destination-search-desktop"
                 value={query}
                 onChange={(value) => updateFilter("q", normalizeQuery(value))}
               />

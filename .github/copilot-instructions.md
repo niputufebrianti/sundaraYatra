@@ -2,6 +2,7 @@
 
 Kamu membantu membangun **Sundara Yatra**, website wisata seni dan budaya Bali (MVP front-end, tanpa backend).
 **Selalu baca `SPEC.md` di akar proyek sebelum bekerja.** Jika instruksi ini bertentangan dengan permintaan di chat, tanyakan dulu.
+Fitur demo tambahan yang disetujui di SPEC.md bagian 2.1.1 boleh dikerjakan setelah fitur inti. Dashboard hanya untuk data destinasi lokal di browser ini; jangan membuat gerbang login palsu. Nomor WhatsApp tetap `null` sampai pemilik proyek memberikannya dan menyetujui pemakaian.
 
 ## Bahasa
 - Jawab, jelaskan, dan beri laporan dalam **bahasa Indonesia** yang sederhana.
@@ -21,7 +22,7 @@ Kamu membantu membangun **Sundara Yatra**, website wisata seni dan budaya Bali (
 5. Setelah selesai: ringkas file yang berubah dan cara mengujinya. Laporkan hasil uji **apa adanya** (LULUS/GAGAL/BELUM DIUJI). Jangan mengklaim sudah diuji jika belum dijalankan.
 
 ## Larangan
-- Jangan menambah fitur di luar SPEC.md bagian 2.1.
+- Jangan menambah fitur di luar SPEC.md bagian 2.1 dan 2.1.1.
 - Jangan mengarang data (alamat, koordinat, harga, jam, jadwal even, fakta budaya). Tandai `dataContoh: true`.
 - Jangan memakai foto/aset tanpa lisensi jelas; catat sumber di `kreditFoto`.
 - Jangan membuat login palsu; Masuk/Daftar hanya tampilan, tanpa menyimpan atau mengirim data.

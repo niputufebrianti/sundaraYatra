@@ -13,6 +13,7 @@
       "mapsUrl": null,
       "jamKunjung": null,
       "tiket": null,
+      "whatsapp": null,
       "fasilitas": [],
       "kreditFoto": "Ilustrasi placeholder milik Sundara Yatra",
       "dataContoh": true
@@ -30,6 +31,7 @@
       "mapsUrl": null,
       "jamKunjung": null,
       "tiket": null,
+      "whatsapp": null,
       "fasilitas": [],
       "kreditFoto": "Ilustrasi placeholder milik Sundara Yatra",
       "dataContoh": true
@@ -47,6 +49,7 @@
       "mapsUrl": null,
       "jamKunjung": null,
       "tiket": null,
+      "whatsapp": null,
       "fasilitas": [],
       "kreditFoto": "Ilustrasi placeholder milik Sundara Yatra",
       "dataContoh": true
@@ -64,6 +67,7 @@
       "mapsUrl": null,
       "jamKunjung": null,
       "tiket": null,
+      "whatsapp": null,
       "fasilitas": [],
       "kreditFoto": "Ilustrasi placeholder milik Sundara Yatra",
       "dataContoh": true
@@ -81,6 +85,7 @@
       "mapsUrl": null,
       "jamKunjung": null,
       "tiket": null,
+      "whatsapp": null,
       "fasilitas": [],
       "kreditFoto": "Ilustrasi placeholder milik Sundara Yatra",
       "dataContoh": true
@@ -98,6 +103,7 @@
       "mapsUrl": null,
       "jamKunjung": null,
       "tiket": null,
+      "whatsapp": null,
       "fasilitas": [],
       "kreditFoto": "Ilustrasi placeholder milik Sundara Yatra",
       "dataContoh": true
@@ -114,6 +120,7 @@
       "akses": "umum",
       "lokasi": "Lokasi belum tersedia",
       "destinasiId": "panggung-tari-contoh-2",
+      "whatsapp": null,
       "deskripsi": "Even contoh untuk pertunjukan tari. Jadwal belum terverifikasi.",
       "dataContoh": true
     },
@@ -127,6 +134,7 @@
       "akses": "tiket",
       "lokasi": "Lokasi belum tersedia",
       "destinasiId": "ruang-musik-contoh-3",
+      "whatsapp": null,
       "deskripsi": "Even contoh untuk pertunjukan musik. Informasi tiket belum tersedia.",
       "dataContoh": true
     },
@@ -140,6 +148,7 @@
       "akses": "sakral",
       "lokasi": "Lokasi belum tersedia",
       "destinasiId": null,
+      "whatsapp": null,
       "deskripsi": "Contoh even sakral. Tanggal dan lokasi masih perlu diverifikasi.",
       "dataContoh": true
     },
@@ -153,6 +162,7 @@
       "akses": "umum",
       "lokasi": "Lokasi belum tersedia",
       "destinasiId": "museum-rupa-contoh-6",
+      "whatsapp": null,
       "deskripsi": "Even contoh untuk pengenalan kriya. Jadwal belum terverifikasi.",
       "dataContoh": true
     }

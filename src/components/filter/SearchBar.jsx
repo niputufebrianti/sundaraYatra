@@ -1,9 +1,9 @@
-export default function SearchBar({ value, onChange }) {
+export default function SearchBar({ value, onChange, id = "destination-search" }) {
   return (
     <div className="search-field">
-      <label htmlFor="destination-search">Cari destinasi</label>
+      <label htmlFor={id}>Cari destinasi</label>
       <input
-        id="destination-search"
+        id={id}
         type="search"
         value={value}
         maxLength={100}

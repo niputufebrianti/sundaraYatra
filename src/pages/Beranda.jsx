@@ -9,6 +9,8 @@ import EmptyState from "../components/ui/EmptyState";
 import LoadingState from "../components/ui/LoadingState";
 import ErrorState from "../components/ui/ErrorState";
 import { loadData } from "../lib/data";
+import { setPageMetadata } from "../lib/pageMetadata";
+import DataNotice from "../components/ui/DataNotice";
 
 const kabupaten = [
   "Badung",
@@ -31,7 +33,10 @@ export default function Beranda() {
   const [activeCategory, setActiveCategory] = useState("");
 
   useEffect(() => {
-    document.title = "Beranda | Sundara Yatra";
+    setPageMetadata(
+      "Beranda | Sundara Yatra",
+      "Jelajahi destinasi seni, budaya, dan even budaya di Bali bersama Sundara Yatra.",
+    );
 
     loadData()
       .then(setData)
@@ -75,6 +80,8 @@ export default function Beranda() {
           </div>
         </Container>
       </section>
+
+      {data && <Container><DataNotice warning={data.warning} /></Container>}
 
       <section className="category-section" aria-labelledby="category-title">
         <Container>

@@ -14,6 +14,7 @@ export default function Footer() {
           <Link to="/destinasi">Destinasi</Link>
           <Link to="/even">Even</Link>
           <Link to="/tentang">Tentang</Link>
+          <Link to="/dashboard">Dashboard demo</Link>
         </nav>
         <p className="footer-note">
           © {new Date().getFullYear()} Sundara Yatra · Data contoh, informasi sedang dilengkapi
